@@ -1,16 +1,5 @@
 <html>
 <style>
-    /*
-
-All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 310). 
-        
-The 'supports' rule will only run if your browser supports CSS grid.
-
-Flexbox and floats are used as a fallback so that browsers which don't support grid will still recieve a similar layout.
-
-*/
-
-/* Base Styles */
 
 :root {
     font-size: 10px;
@@ -379,54 +368,67 @@ Remove or comment-out the code block below to see how the browser will fall-back
         }
     }
 }
+a{
+   text-decoration: none;
+   }
 
 </style>
 <body>
 <header>
 
-    <div class="container">
+   <div class="container">
 
-        <div class="profile">
+      <div class="profile">
 
-            <div class="profile-image">
+         <div class="profile-image">
 
-                <img src="https://scontent.fdad3-6.fna.fbcdn.net/v/t39.30808-6/355700902_967123247765841_9191622720652304609_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=RbnQEzsPJC0AX-TilMG&_nc_ht=scontent.fdad3-6.fna&oh=00_AfDWLoeoz934FbGVFK2Hdxt43IKtIhq7TO1hDQrKDHA-dA&oe=64B750F1" alt="" width="180px" height="180px">
+            <img id = "avatar"  alt="" width ="152px" height = "152px">
 
-            </div>
+         </div>
 
-            <div class="profile-user-settings">
+         <div class="profile-user-settings">
 
-                <h1 class="profile-user-name">Cam Nguyen 🦫</h1>
+            <a href = "https://github.com/cnmeow"><h1 class="profile-user-name">cnmeow</h1></a>
 
+            <button class="btn profile-edit-btn">Edit Profile</button>
 
-                <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
+            <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
 
-            </div>
+         </div>
 
-            <div class="profile-stats">
+         <div class="profile-stats">
 
-                <ul>
-                    <li><span class="profile-stat-count">19</span> Years Old</li>
-                    <li><span class="profile-stat-count">16</span> Repositories</li>
-                </ul>
+            <ul>
+               <li><span id = "cntRepos" class="profile-stat-count"></span> repos</li>
+               <li><span class="profile-stat-count">43</span> followers</li>
+            </ul>
 
-            </div>
+         </div>
 
-            <div class="profile-bio">
+         <div class="profile-bio">
 
-                <p><span class="profile-real-name">⛪️</span> UIT - VNUHCM<br>
-                <a href="https://www.facebook.com/camnguyenmeow/"> <span class="profile-real-name">🔹</span> Facebook </a>
-            </p>
+            <p><span class="profile-real-name">Cam Nguyen 🦫</span><br> ⛪️ UIT-VNUHCM <br> <a href = "https://www.facebook.com/camnguyenmeow/"> 🅵 Trần Cẩm Nguyên </a></p>
 
-            </div>
+         </div>
 
-        </div>
-        <!-- End of profile section -->
+      </div>
+      <!-- End of profile section -->
 
-    </div>
-    <!-- End of container -->
+   </div>
+   <!-- End of container -->
 
 </header>
 
+<script type="text/javascript">
+   fetch("https://api.github.com/users/cnmeow")
+   .then(response=>response.json())
+   .then(data=> {
+      const avtUrl = data.avatar_url;
+      const publicRepos = data.public_repos;
+      document.getElementById('avatar').src = avtUrl;
+      document.getElementById('cntRepos').innerHTML = publicRepos;
+   })
+</script>
 </body>
 </html>
+
