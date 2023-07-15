@@ -371,6 +371,9 @@ Remove or comment-out the code block below to see how the browser will fall-back
 a{
    text-decoration: none;
    }
+   .infoRepo{
+      font-size:1;
+   }
 
 </style>
 <body>
@@ -400,7 +403,7 @@ a{
 
             <ul>
                <li><span id = "cntRepos" class="profile-stat-count"></span> repos</li>
-               <li><span class="profile-stat-count">43</span> followers</li>
+               <li><span id = "followers" class="profile-stat-count"></span> followers</li>
             </ul>
 
          </div>
@@ -418,17 +421,127 @@ a{
    <!-- End of container -->
 
 </header>
+<main>
 
+   <div class="container">
+
+      <div class="gallery">
+
+         <div class="gallery-item" tabindex="0">
+
+            <img src="img/ghostcandraw.png" class="gallery-image" alt="" width="500px" height="500">
+
+            <div class="gallery-item-info">
+
+               <ul>
+                  <li class="gallery-item-likes"> Ghost Can Draw 👻</li><br>
+                  <li class="infoRepo"> Dùng 4 phím lên-xuống-trái-phải để điều khiển con ma. Trong khi di chuyển, nó sẽ vẽ 😗 </li>
+                 
+               </ul>
+
+            </div>
+
+         </div>
+
+        
+
+         <div class="gallery-item" tabindex="0">
+
+            <img src="img/playmay.png" class="gallery-image" alt="" width="500px" height="500">
+
+            <div class="gallery-item-info">
+
+               <ul>
+                  <li class="gallery-item-likes"> Play Mây 😽</li><br>
+                  <li class="infoRepo"> Lúc Mây đang ngủ hãy nhấn vào Mây để nựng nó. Nếu Mây bất ngờ tỉnh dậy thì nó sẽ cắn bạn đó </li>
+                 
+               </ul>
+
+            </div>
+
+         </div>
+
+         <div class="gallery-item" tabindex="0">
+
+            <img src="img/randomfood.png" class="gallery-image" alt="" width="500px" height="500">
+
+            <div class="gallery-item-info">
+
+               <ul>
+                  <li class="gallery-item-likes"> Random Food 🍗</li><br>
+                  <li class="infoRepo"> Hãy dùng nó khi "ăn gì cũng được" </li>
+                 
+               </ul>
+
+            </div>
+
+         </div>
+         <div class="gallery-item" tabindex="0">
+
+            <img src="img/bdcake.png" class="gallery-image" alt="" width="500px" height="500">
+
+            <div class="gallery-item-info">
+
+               <ul>
+                  <li class="gallery-item-likes"> Online Birthday Cake 🎂</li><br>
+                  <li class="infoRepo"> Bánh sinh nhật online cho mùa dịch 😗 </li>
+                 
+               </ul>
+
+            </div>
+
+         </div>
+         <div class="gallery-item" tabindex="0">
+
+            <img src="img/boitinhiu.png" class="gallery-image" alt="" width="500px" height="500">
+
+            <div class="gallery-item-info">
+
+               <ul>
+                  <li class="gallery-item-likes"> Bói tình iu 🔮</li><br>
+                  <li class="infoRepo"> Xem độ hợp giữa bạn và crush 😘 </li>
+                 
+               </ul>
+
+            </div>
+
+         </div>
+         <div class="gallery-item" tabindex="0">
+
+            <img src="img/connectwire.png" class="gallery-image" alt="" width="500px" height="500">
+
+            <div class="gallery-item-info">
+
+               <ul>
+                  <li class="gallery-item-likes"> Nối mạch điện ⚡️</li><br>
+                  <li class="infoRepo"> Nhấn vào các đoạn dây điện để xoay nó (mỗi đoạn chỉ được xoay tối đa 4 lần), nối thành 1 mạch điện hoàn chỉnh từ START đến FINISH. </li>
+                 
+               </ul>
+
+            </div>
+
+         </div>
+
+      </div>
+      <!-- End of gallery -->
+
+      <div class="loader"></div>
+
+   </div>
+   <!-- End of container -->
+
+</main>
 <script type="text/javascript">
    fetch("https://api.github.com/users/cnmeow")
    .then(response=>response.json())
    .then(data=> {
       const avtUrl = data.avatar_url;
-      const publicRepos = data.public_repos;
+      const cntRepos = data.public_repos;
+      const cntFollowers = data.followers;
       document.getElementById('avatar').src = avtUrl;
-      document.getElementById('cntRepos').innerHTML = publicRepos;
+      document.getElementById('cntRepos').innerHTML = cntRepos;
+      document.getElementById('followers').innerHTML = cntFollowers;
    })
 </script>
 </body>
 </html>
-
